@@ -8,6 +8,9 @@ class BasicExample extends rallf.Task {
 
   async start(input) {
     this.logger.debug(this.fqtn + ' started');
+    let res = await this.robot.delegateLocal('test-task', 'like', {
+      post: 'some post'
+    }, {});
     return 'started';
   }
 
