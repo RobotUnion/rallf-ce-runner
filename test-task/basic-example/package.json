@@ -1,0 +1,8 @@
+{
+  "name": "basic-example",
+  "main": "src/main.js",
+  "scripts": {},
+  "dependencies": {
+    "rallf-js-sdk": "^1.0.0-beta.2"
+  }
+}

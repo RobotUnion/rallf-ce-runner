@@ -23,6 +23,10 @@
     "amqplib": "^0.5.5",
     "commander": "^4.1.1",
     "jayson": "^3.2.0",
-    "loggin-js": "^1.8.0"
+    "loggin-js": "^1.8.0",
+    "yargs": "^15.1.0"
+  },
+  "devDependencies": {
+    "rallf-js-sdk": "^1.0.0-beta.2"
   }
 }
