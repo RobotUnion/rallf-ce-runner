@@ -1,0 +1,28 @@
+{
+  "name": "rallf-ce-runner",
+  "version": "1.0.0",
+  "description": "Pipes sdk std output to a RabbitMQ output queue as rpc, and receives input from a RabbitMQ input queue.",
+  "main": "index.js",
+  "bin": {
+    "rallf-ce-runner": "main.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nombrekeff/rallf-ce-runner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nombrekeff/rallf-ce-runner/issues"
+  },
+  "homepage": "https://github.com/nombrekeff/rallf-ce-runner#readme",
+  "dependencies": {
+    "amqplib": "^0.5.5",
+    "commander": "^4.1.1",
+    "jayson": "^3.2.0",
+    "loggin-js": "^1.8.0"
+  }
+}

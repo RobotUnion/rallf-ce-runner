@@ -4,5 +4,5 @@ Pipes sdk std output to a RabbitMQ output queue as rpc, and receives input from 
 
 Basic Usage:
 ```sh
-    rallf-ce-runner rallf-js run -t .
+    rallf-ce-runner rallf-js run -t . -c { "in-queue": "asd" }
 ```
