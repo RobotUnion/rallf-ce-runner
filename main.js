@@ -38,7 +38,12 @@ async function runnerMain(env, opts = {}) {
         jayson.Utils.JSON.parse(msg.content.toString(), {},
             (err, obj) => {
                 if (err) {
+                    queue_in.nack(msg);
                     sendMessage(queue_error, qname.error, JSON.stringify({ message: err.message }));
+                } else {
+                    queue_in.ack(msg);
+                    // Do something with the input...
+                    commandProcess.stdin.write(msg.content.toString());
                 }
             });
     });
