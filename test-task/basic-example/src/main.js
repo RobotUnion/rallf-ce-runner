@@ -2,12 +2,15 @@ const rallf = require('rallf-js-sdk');
 
 class BasicExample extends rallf.Task {
   async warmup() {
-    this.logger.info('Warming up ' + this.name);
+    this.logger.debug('Warming up ' + this.name);
     this.firefox = this.devices.get('firefox');
+    let res = await this.robot.delegateLocal('test-task', 'like', {
+      post: 'some post'
+    }, {});
   }
 
   async start(input) {
-    this.logger.debug(this.fqtn + ' started');
+    this.logger.info(this.fqtn + ' started');
     let res = await this.robot.delegateLocal('test-task', 'like', {
       post: 'some post'
     }, {});
