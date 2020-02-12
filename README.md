@@ -8,7 +8,9 @@
 <h1 align="center">rallf-ce-runner</h1>
 
 <div align="center">
-  <p>Pipes sdk std output to a RabbitMQ output queue as rpc, and receives input from a RabbitMQ input queue.</p>
+  <p>
+    Runs a command, and sends `stdout` to a RabbitMQ queue and writes to `stdin` any message from a queue.
+  </p>
 </div>
 
 ****
