@@ -2,7 +2,7 @@
 <!-- Docs links -->
 <p align="center">
   <a href="http://rallf.com">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxdb7maKD6w4wPHDswPAKxohEkEcJEPP492ogVxey0KzoFwvT4" height="100">
+    <img src="https://avatars2.githubusercontent.com/u/24513128?s=200&v=4" height="100">
   </a>
 </p>
 <h1 align="center">rallf-ce-runner</h1>
