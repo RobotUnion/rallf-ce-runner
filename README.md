@@ -1,6 +1,20 @@
-# rallf-ce-runner
 
-Pipes sdk std output to a RabbitMQ output queue as rpc, and receives input from a RabbitMQ input queue.
+<!-- Docs links -->
+<p align="center">
+  <a href="http://rallf.com">
+    <img src="https://avatars2.githubusercontent.com/u/24513128?s=200&v=4" height="100">
+  </a>
+</p>
+<h1 align="center">rallf-ce-runner</h1>
+
+<div align="center">
+  <p>Pipes sdk std output to a RabbitMQ output queue as rpc, and receives input from a RabbitMQ input queue.</p>
+</div>
+
+****
+
+**Disclaimer! This package is in development stage (unstable), it may be potentially buggy**
+
 
 Basic Usage:
 ```sh
