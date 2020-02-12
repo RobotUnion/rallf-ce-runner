@@ -9,7 +9,7 @@
 
 <div align="center">
   <p>
-    Runs a command, and sends `stdout` to a RabbitMQ queue and writes to `stdin` any message from a queue.
+    Runs a command, and sends <code>stdout</code> to a RabbitMQ queue and writes to <code>stdin</code> any message from a queue.
   </p>
 </div>
 
