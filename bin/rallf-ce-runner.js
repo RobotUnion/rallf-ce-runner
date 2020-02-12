@@ -2,12 +2,15 @@
 
 // Main binary file for rallf-ce-broker
 const runnerMain = require('../main');
+const yargs = require('yargs');
 
-require('yargs')
-    .command(
-        'pipe', 'pipe',
-        (yargs) => {
-            yargs.options({
+yargs.command(
+    'pipe', 
+    'Pipe output and receive input from RabbitMQ',
+    (yargs) => {
+        yargs
+            .option('debug', { default: false, alias: 'd' })
+            .options({
                 qin: {
                     describe: 'In queue',
                 },
@@ -25,14 +28,12 @@ require('yargs')
                 }
             });
 
-            yargs.check(argv => {
-                if (!argv.name && [!argv.in | !argv.out | !argv.error]) {
-                    throw 'If option --name is not passed [--in, --out, --error] must be passed in';
-                }
-                return true;
-            });
-        },
-        (argv) => runnerMain(process.env, argv)
-    )
-    .argv;
-
+        yargs.check(argv => {
+            if (!argv.name && [!argv.in | !argv.out | !argv.error]) {
+                throw 'If option --name is not passed [--in, --out, --error] must be passed in';
+            }
+            return true;
+        });
+    },
+    (argv) => runnerMain(process.env, argv),
+).argv;
