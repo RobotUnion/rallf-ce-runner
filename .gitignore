@@ -2,3 +2,4 @@
 logs
 .crossbar
 test-task/basic-example/node_modules
+/dist
