@@ -14,11 +14,12 @@ const { connect, isRpc, createChannel, generateQueueNames, setConsumer, sendMess
  * @param {boolean} opts.error 
  */
 function stdToRabbitMQ(env, opts = {}) {
-    const logger = loggin.clone({
+    const logger = loggin.logger('console', {
         channel: 'runner-main',
         color: true,
         formatter: 'detailed',
-        level: (env.DEBUG || opts.debug) ? loggin.severity('DEBUG') : loggin.severity('INFO')
+        level: (opts.debug) ? loggin.severity('DEBUG') : loggin.severity('INFO'),
+        user: null,
     });
     logger.debug('Launched rallf-ce-runner', opts);
 
@@ -42,24 +43,34 @@ function stdToRabbitMQ(env, opts = {}) {
 
     // Connect to rabbit 
     connect(env.RABBIT_URL || `amqp://0.0.0.0:5672`)
-        .then(conn => Promise.all([
-            createChannel(conn, qname.in),
-            createChannel(conn, qname.out),
-            createChannel(conn, qname.error),
-        ]))
+        // generate channels
+        .then(
+            conn => Promise.all([
+                createChannel(conn, qname.in),
+                createChannel(conn, qname.out),
+                createChannel(conn, qname.error),
+            ])
+        )
+        // run command and pipe to and from queues
         .then(([queue_in, queue_out, queue_error]) => {
-            // generate channels
-            // const queue_in = await createChannel(conn, qname.in);
-            // const queue_out = await createChannel(conn, qname.out);
-            // const queue_error = await createChannel(conn, qname.error);
+            logger.debug('Spawing command: ', [command, ...args]);
 
             // spawns child command
-            logger.debug('Spawing command: ', [command, ...args]);
             const commandProcess = spawn(command, args, { shell: true });
+
+            logger.debug('Spawned command: ', [command, ...args]);
+
+
+            logger.debug('Map: ');
+            logger.debug(qname.in + ' -> stdin');
+            logger.debug('stderr -> ' + qname.error);
+            logger.debug('stdout -> ' + qname.out);
+
+            logger.info('Waiting...');
 
             // We setup a consumer (this reads messages from a sepecified queue)
             setConsumer(queue_in, qname.in, async (msg) => {
-                logger.debug(`${qname.in} received message: ${msg.content.toString()}`);
+                logger.info(`${qname.in} received message: ${msg.content.toString()}`);
 
                 // Check if it's a valid RPC object
                 isRpc(msg.content.toString(), (err, obj) => {
@@ -78,7 +89,7 @@ function stdToRabbitMQ(env, opts = {}) {
 
             // handle stdout messages
             commandProcess.stdout.on('data', async (data) => {
-                logger.debug(`${command} (stdout): ${data}`);
+                logger.info(`${command} (stdout): ${data}`);
 
                 // Try parsing RPC message
                 isRpc(data.toString(), (err, obj) => {

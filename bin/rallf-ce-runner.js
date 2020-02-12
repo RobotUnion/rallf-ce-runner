@@ -9,7 +9,7 @@ yargs.command(
     'Pipe output and receive input from RabbitMQ',
     (yargs) => {
         yargs
-            .option('debug', { default: false, alias: 'd' })
+            .option('debug')
             .options({
                 qin: {
                     describe: 'In queue',
