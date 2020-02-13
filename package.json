@@ -1,8 +1,8 @@
 {
   "name": "rallf-ce-runner",
   "version": "1.0.0",
-  "description": "Pipes sdk std output to a RabbitMQ output queue as rpc, and receives input from a RabbitMQ input queue.",
-  "main": "index.js",
+  "description": "Runs any command, and sends stdout to a RabbitMQ queue and writes to stdin any message from a queue.",
+  "main": "main.js",
   "bin": {
     "rallf-ce-runner": "main.js"
   },
@@ -11,14 +11,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nombrekeff/rallf-ce-runner.git"
+    "url": "git+https://github.com/RobotUnion/rallf-ce-runner.git"
   },
-  "author": "",
+  "author": {
+    "name": "Manolo Edge (a.k.a nombrekeff)",
+    "email": "manoloedge96@gmail.com"
+  },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nombrekeff/rallf-ce-runner/issues"
+    "url": "https://github.com/RobotUnion/rallf-ce-runner/issues"
   },
-  "homepage": "https://github.com/nombrekeff/rallf-ce-runner#readme",
+  "homepage": "https://github.com/RobotUnion/rallf-ce-runner#readme",
   "dependencies": {
     "amqplib": "^0.5.5",
     "commander": "^4.1.1",
