@@ -11,7 +11,7 @@
   <p>
     Runs any command, and sends <code>stdout</code> to a RabbitMQ queue and writes to <code>stdin</code> any message from a queue.
   </p>
-  <i>**Notice:** this is a tool made internally for <a href="">rallf-ce</a> and is not intented for use independently -- use at your own risk</i>
+  <i><b>Notice:</b> this is a tool made internally for <a href="https://github.com/RobotUnion/rallf-ce">rallf-ce</a> and not to use independently -- use at your own risk</i>
 </div>
 
 ****
@@ -19,7 +19,8 @@
 **Disclaimer! This package is in development stage (unstable), it may be potentially buggy**
 
 
-## Usage
+## Usage
+
 Using bin file with arguments:
 ```sh
    node bin/rallf-ce-runner.js pipe --debug --name=test --cmd="rallf-js run -t ./test-task/basic-example"
