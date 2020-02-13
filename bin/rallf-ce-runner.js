@@ -35,5 +35,5 @@ yargs.command(
             return true;
         });
     },
-    (argv) => runnerMain(process.env, argv),
+    (argv) => runnerMain(argv),
 ).argv;
