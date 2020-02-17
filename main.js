@@ -13,15 +13,17 @@ const {
 const jayson = require('jayson');
 
 /**
- *
- * @param {object} env
+ * This function runs a command and:
+ *  * sends **stdout** output to RabbitMQ
+ *  * sends **stderr** output to RabbitMQ
+ *  * reads a RabbitMQ queue and writes to **stdin**
  * @param {object} argv
  * @param {boolean} argv.debug
- * @param {boolean} argv.cmd
- * @param {boolean} argv.name
- * @param {boolean} argv.in
- * @param {boolean} argv.out
- * @param {boolean} argv.error
+ * @param {string} argv.cmd
+ * @param {string} argv.name
+ * @param {string} argv.in
+ * @param {string} argv.out
+ * @param {string} argv.error
  */
 function stdToRabbitMQ(argv = {}) {
   const env = process.env;
